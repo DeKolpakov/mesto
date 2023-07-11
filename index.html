@@ -3,18 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
 
-<body>
+<body class="page">
 
-  <header></header>
+  <header class="header">
+    <img class="logo" src="./images/logo/logo.svg" alt="логотип"></img>
+    <div class="line"></div>
+  </header>
 
-  <main></main>
+  <main>
+    <section class="profile">
+     
+      <div class="profile-info">
+        <img class="avatar" src="./images/avatar/avatar.png" alt="Жак-Ив Кусто"></img>
 
-  <footer></footer>
+        <div> 
+          <h2 class="name">Жак-Ив Кусто
+            <button class="button_edit" type="button">
+              <img src="./images/icons/edit-button.svg" alt="кнопка">
+            </button>
+          </h2>
+          <p class="description">Исследователь океана</p>
+        </div>
+       
+        
+      </div>
 
+      <button class="button_add" type="button"><img src="./images/icons/add-button.svg" alt="кнопка"></button>
+      
+    </section>
+
+    <section class="galery">
+
+      <div class="galery__item">
+        <img class="galery__photo" src="./images/galery/batumi.png" alt="Батуми">
+        <div class="galery__card">
+          <div class="galery__title">порт Батуми</div>
+          <button class="button_like" type="button"><img src="./images/icons/like_disabled.svg" alt="лайк"></button>
+        </div>
+       </div>
+       <div class="galery__item">
+        <img class="galery__photo" src="./images/galery/borneo.png" alt="остров Калимантан / Борнео">
+        <div class="galery__card">
+          <div class="galery__title">Калимантан</div>
+          <button class="button_like" type="button"><img src="./images/icons/like_disabled.svg" alt="лайк"></button>
+        </div>
+       </div>
+       <div class="galery__item">
+        <img class="galery__photo" src="./images/galery/caba-roca.png" alt="Каба-да-Рока">
+        <div class="galery__card">
+          <div class="galery__title">Португалия</div>
+          <button class="button_like" type="button"><img src="./images/icons/like_disabled.svg" alt="лайк"></button>
+        </div>
+       </div>
+       <div class="galery__item">
+        <img class="galery__photo" src="./images/galery/maldives.png" alt="Мальдивы">
+        <div class="galery__card">
+          <div class="galery__title">Мальдивы</div>
+          <button class="button_like" type="button"><img src="./images/icons/like_disabled.svg" alt="лайк"></button>
+        </div>
+       </div>
+       <div class="galery__item">
+        <img class="galery__photo" src="./images/galery/raja ampat islands.png" alt="архипелаг Раджа-Ампат">
+        <div class="galery__card">
+          <div class="galery__title">Раджа-Ампат архипелаг</div>
+          <button class="button_like" type="button"><img src="./images/icons/like_disabled.svg" alt="лайк"></button>
+        </div>
+       </div>
+       <div class="galery__item">
+        <img class="galery__photo" src="./images/galery/indonesia.png" alt="Индонезия">
+        <div class="galery__card">
+          <div class="galery__title">Индонезия</div>
+          <button class="button_like" type="button"><img src="./images/icons/like_disabled.svg" alt="лайк"></button>
+        </div>
+       </div>
+      
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer_description">© 2020 Mesto Russia</p>
+  </footer>
+
+  <!-- <section class="popup">
+    <form class="popup__container">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <button class="button_close" type="button"><img src="./images/icons/close-icon.svg" alt="крестик"></button>
+      <input class="input__name" type="text" placeholder="Жак-Ив Кусто" required size="40">
+      <input class="input__description" type="text" placeholder="Исследователь океана" required size="40">
+      <button class="button_save" type="button"><img src="./images/icons/Submit-button.svg" alt="кнопка сохранить"></button>
+    </form>
+  </section> -->
 
 <script src="scripts/script.js"></script>
 </body>
