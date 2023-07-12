@@ -1,0 +1,9 @@
+.galery__item {
+  width: 282px;
+  height: 361px;
+  border-radius: 10px;
+  background-color: #fff;
+  overflow: hidden;
+  margin: 0 auto 0 auto;
+  padding: 0;
+}
