@@ -2,7 +2,12 @@
   box-shadow: none;
   background: none;
   border: none;
+  cursor: pointer;
+  transition: 0.8s;
   padding: 0;
   margin: 30px 20px 36px 20px;
-  cursor: pointer;
+}
+
+.galery__button-like:hover {
+  opacity: 0.5;
 }

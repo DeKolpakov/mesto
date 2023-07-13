@@ -7,79 +7,11 @@
   padding: 0 200px 0 200px;
 }
 
-.profile__avatar {
-  width: 120px;
-  border-radius: 50%;
-  margin: 0;
-  padding: 0;
-}
-
-.profile__info {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  grid-template-rows: repeat(2, auto);
-  grid-template-areas:
-    "name button"
-    "description description";
-  align-items: center;
-  column-gap: 20px;
-  row-gap: 8px;
-  padding: 0;
-  margin: 0 auto 0 30px;
-}
-
-.profile__name {
-  grid-area: name;
-  font-size: 42px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 48px;
-  margin: 0;
-  padding: 0 0 0 0;
-}
-
-.profile__button-edit {
-  width: 24px;
-  height: 24px;
-  grid-area: button;
-  background-image: url(../../images/icons/edit-button.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: transparent;
-  box-shadow: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  margin: 16px 0 0 0;
-}
-
-.profile__description {
-  grid-area: description;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin: 0;
-  padding: 0;
-}
-
 @media screen and (max-width: 1100px) {
   .profile {
     flex-direction: column;
     align-items: center;
     margin: 40px auto 48px auto;
-  }
-
-  .profile__info {
-    justify-items: center;
-    column-gap: 10px;
-    padding: 0;
-    margin: 0 auto 0 auto;
-  }
-
-  .profile__name {
-    margin: 24px auto 0 auto;
-    padding: 0;
   }
 }
 
@@ -87,46 +19,5 @@
   .profile {
     margin: 40px auto 36px auto;
     padding: 0;
-  }
-
-  .profile__name {
-    text-align: center;
-    font-size: 27px;
-    line-height: normal;
-    padding: 0 0 0 30px;
-  }
-
-  .profile__description {
-    text-align: center;
-    font-size: 14px;
-  }
-
-  .profile__button-edit {
-    width: 18px;
-    height: 18px;
-    margin: 20px 0 0 0;
-  }
-}
-
-.profile__button-add {
-  width: 150px;
-  height: 50px;
-  background-image: url(../../images/icons/add-button.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: transparent;
-  box-shadow: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  margin: 0;
-}
-
-@media screen and (max-width: 1100px) {
-  .profile__button-add {
-    width: 282px;
-    height: 50px;
-    background-image: url(../../images/icons/add-button_max.svg);
-    margin: 35px 0 0 0;
   }
 }
