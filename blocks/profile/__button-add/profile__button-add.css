@@ -22,7 +22,7 @@
   .profile__button-add {
     width: 282px;
     height: 50px;
-    background-image: url(../../images/icons/add-button_max.svg);
+    background-image: url(../../../images/icons/add-button_max.svg);
     margin: 35px 0 0 0;
   }
 }
