@@ -31,4 +31,4 @@
 
 ## GitHub
 
-- [Ссылка на проект в GitHub](https://dekolpakov.github.io/)
+- [Ссылка на проект в GitHub](https://github.com/DeKolpakov/mesto)
