@@ -32,3 +32,4 @@
 ## GitHub
 
 - [Ссылка на проект в GitHub](https://github.com/DeKolpakov/mesto)
+- [Ссылка на проект в GitHub Pages] (https://dekolpakov.github.io/mesto/)
