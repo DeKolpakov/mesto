@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
   </head>
 
   <body class="page">
     <header class="header">
-      <img class="header__logo" src="./images/logo/logo.svg" alt="Логотип" />
+      <img class="header__logo" src="./images/logo/logo.svg" alt="Логотип">
     </header>
 
     <main>
       <section class="profile">
-        <img class="profile__avatar" src="./images/avatar/avatar.png" alt="Жак-Ив Кусто" />
+        <img class="profile__avatar" src="./images/avatar/avatar.png" alt="Жак-Ив Кусто">
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__button-edit profile__button-open" type="button" aria-label="изменить профиль"></button>
@@ -33,7 +33,7 @@
     <template class="template__galery-item">
       <div class="galery__item">
         <button class="galery__button-delete" type="button" aria-label="удалить"></button>
-        <img class="galery__photo" src="" alt="" />
+        <img class="galery__photo" src="#" alt="#">
         <div class="galery__card">
           <h2 class="galery__title"></h2>
           <button class="galery__button-like" type="button" aria-label="лайк"></button>
@@ -46,8 +46,8 @@
         <h2 class="popup__title">Редактировать профиль</h2>
         <button class="popup__button-close" type="button" aria-label="закрыть окно"></button>
         <form class="popup__form" name="form-profile" method="post">
-          <input class="popup__input" id="profile-name" name="name" type="text" placeholder="Имя" required size="40" />
-          <input class="popup__input" id="profile-description" name="description" type="text" placeholder="О себе" required size="40" />
+          <input class="popup__input" id="profile-name" name="name" type="text" placeholder="Имя" required size="40">
+          <input class="popup__input" id="profile-description" name="description" type="text" placeholder="О себе" required size="40">
           <button class="popup__button-save" type="submit" aria-label="сохранить">Сохранить</button>
         </form>
       </div>
@@ -58,8 +58,8 @@
         <h2 class="popup__title">Новое место</h2>
         <button class="popup__button-close popup__button-close-add" type="button" aria-label="закрыть окно"></button>
         <form class="popup__form" name="form-profile" method="post">
-          <input class="popup__input" id="image-name" name="image-name" type="text" placeholder="Название" required size="40" />
-          <input class="popup__input" id="image-link" name="image-link" type="text" placeholder="Ссылка на картинку" required size="99" />
+          <input class="popup__input" id="image-name" name="image-name" type="text" placeholder="Название" required size="40">
+          <input class="popup__input" id="image-link" name="image-link" type="text" placeholder="Ссылка на картинку" required size="99">
           <button class="popup__button-save popup__button-save-add" type="submit" aria-label="сохранить">Создать</button>
         </form>
       </div>
@@ -68,7 +68,7 @@
     <div class="fullimage">
       <div class="fullimage__container">
         <button class="fullimage__button-close" type="button" aria-label="закрыть окно"></button>
-        <img src="" alt="" class="fullimage__photo" />
+        <img src="#" alt="#" class="fullimage__photo">
         <h2 class="fullimage__title"></h2>
       </div>
     </div>
