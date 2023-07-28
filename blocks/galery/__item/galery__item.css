@@ -5,6 +5,7 @@
   background-color: #fff;
   overflow: hidden;
   display: flex;
+  position: relative;
   flex-direction: column;
   box-sizing: border-box;
   margin: 0 auto 0 auto;

@@ -23,55 +23,23 @@
         <button class="profile__button-add" type="button" aria-label="добавить фото"></button>
       </section>
 
-      <section class="galery">
-        <div class="galery__item">
-          <img class="galery__photo" src="./images/galery/batumi.png" alt="парусник в Черном море" />
-          <div class="galery__card">
-            <h2 class="galery__title">порт Батуми</h2>
-            <button class="galery__button-like" type="button" aria-label="лайк"></button>
-          </div>
-        </div>
-        <div class="galery__item">
-          <img class="galery__photo" src="./images/galery/borneo.png" alt="черепаша плывущая в рифах" />
-          <div class="galery__card">
-            <h2 class="galery__title">Калимантан</h2>
-            <button class="galery__button-like" type="button" aria-label="лайк"></button>
-          </div>
-        </div>
-        <div class="galery__item">
-          <img class="galery__photo" src="./images/galery/caba-roca.png" alt="скалы Каба-да-Рока" />
-          <div class="galery__card">
-            <h2 class="galery__title">Португалия</h2>
-            <button class="galery__button-like" type="button" aria-label="лайк"></button>
-          </div>
-        </div>
-        <div class="galery__item">
-          <img class="galery__photo" src="./images/galery/maldives.png" alt="подводные рифы на Мальдивах" />
-          <div class="galery__card">
-            <h2 class="galery__title">Мальдивы</h2>
-            <button class="galery__button-like" type="button" aria-label="лайк"></button>
-          </div>
-        </div>
-        <div class="galery__item">
-          <img class="galery__photo" src="./images/galery/raja_ampat.png" alt="водолаз в окруженный косяком рыб" />
-          <div class="galery__card">
-            <h2 class="galery__title">Раджа-Ампат архипелаг</h2>
-            <button class="galery__button-like" type="button" aria-label="лайк"></button>
-          </div>
-        </div>
-        <div class="galery__item">
-          <img class="galery__photo" src="./images/galery/indonesia.png" alt="яхта и желтые полосатики" />
-          <div class="galery__card">
-            <h2 class="galery__title">Индонезия</h2>
-            <button class="galery__button-like" type="button" aria-label="лайк"></button>
-          </div>
-        </div>
-      </section>
+      <section class="galery"></section>
     </main>
 
     <footer class="footer">
       <p class="footer__description">© 2020 Mesto Russia</p>
     </footer>
+
+    <template class="template__galery-item">
+      <div class="galery__item">
+        <button class="galery__button-delete" type="button" aria-label="удалить"></button>
+        <img class="galery__photo" src="" alt="" />
+        <div class="galery__card">
+          <h2 class="galery__title"></h2>
+          <button class="galery__button-like" type="button" aria-label="лайк"></button>
+        </div>
+      </div>
+    </template>
 
     <div class="popup">
       <div class="popup__container">
@@ -82,6 +50,26 @@
           <input class="popup__input" id="profile-description" name="description" type="text" placeholder="О себе" required size="40" />
           <button class="popup__button-save" type="submit" aria-label="сохранить">Сохранить</button>
         </form>
+      </div>
+    </div>
+
+    <div class="popup popup-add">
+      <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <button class="popup__button-close popup__button-close-add" type="button" aria-label="закрыть окно"></button>
+        <form class="popup__form" name="form-profile" method="post">
+          <input class="popup__input" id="image-name" name="image-name" type="text" placeholder="Название" required size="40" />
+          <input class="popup__input" id="image-link" name="image-link" type="text" placeholder="Ссылка на картинку" required size="99" />
+          <button class="popup__button-save popup__button-save-add" type="submit" aria-label="сохранить">Создать</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="fullimage">
+      <div class="fullimage__container">
+        <button class="fullimage__button-close" type="button" aria-label="закрыть окно"></button>
+        <img src="" alt="" class="fullimage__photo" />
+        <h2 class="fullimage__title"></h2>
       </div>
     </div>
 
