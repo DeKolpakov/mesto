@@ -41,37 +41,37 @@
       </div>
     </template>
 
-    <div class="popup">
-      <div class="popup__container">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <button class="popup__button-close" type="button" aria-label="закрыть окно"></button>
-        <form class="popup__form" name="form-profile" method="post">
-          <input class="popup__input" id="profile-name" name="name" type="text" placeholder="Имя" required size="40">
-          <input class="popup__input" id="profile-description" name="description" type="text" placeholder="О себе" required size="40">
-          <button class="popup__button-save" type="submit" aria-label="сохранить">Сохранить</button>
-        </form>
-      </div>
+   <div class="popup popup_type_profile">
+    <div class="popup__container popup__container_type_profile">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <button class="popup__button-close popup__button-close_type_profile" type="button" aria-label="закрыть окно"></button>
+      <form class="popup__form popup__form_type_profile" name="form-profile" method="post">
+        <input class="popup__input" id="profile-name" name="name" type="text" placeholder="Имя" required size="40">
+        <input class="popup__input" id="profile-description" name="description" type="text" placeholder="О себе" required size="40">
+        <button class="popup__button-save popup__button-save_type_profile" type="submit" aria-label="сохранить">Сохранить</button>
+      </form>
     </div>
+  </div>
 
-    <div class="popup popup-add">
-      <div class="popup__container">
-        <h2 class="popup__title">Новое место</h2>
-        <button class="popup__button-close popup__button-close-add" type="button" aria-label="закрыть окно"></button>
-        <form class="popup__form" name="form-profile" method="post">
-          <input class="popup__input" id="image-name" name="image-name" type="text" placeholder="Название" required size="40">
-          <input class="popup__input" id="image-link" name="image-link" type="text" placeholder="Ссылка на картинку" required size="99">
-          <button class="popup__button-save popup__button-save-add" type="submit" aria-label="сохранить">Создать</button>
-        </form>
-      </div>
+  <div class="popup popup_type_addimage">
+    <div class="popup__container popup__container_type_addimage">
+      <h2 class="popup__title">Новое место</h2>
+      <button class="popup__button-close popup__button-close_type_add" type="button" aria-label="закрыть окно"></button>
+      <form class="popup__form popup__form_type_addimage" name="form-profile" method="post">
+        <input class="popup__input" id="image-name" name="image-name" type="text" placeholder="Название" required size="40">
+        <input class="popup__input" id="image-link" name="image-link" type="url" placeholder="Ссылка на картинку" required size="99">
+        <button class="popup__button-save popup__button-save_type_addimage" type="submit" aria-label="сохранить">Создать</button>
+      </form>
     </div>
+  </div>
 
-    <div class="fullimage">
-      <div class="fullimage__container">
-        <button class="fullimage__button-close" type="button" aria-label="закрыть окно"></button>
-        <img src="#" alt="#" class="fullimage__photo">
-        <h2 class="fullimage__title"></h2>
-      </div>
+  <div class="popup popup_type_fullimage">
+    <div class="popup__container popup__container_type_fullimage">
+      <button class="popup__button-close popup__button-close_type_fullimage" type="button" aria-label="закрыть окно"></button>
+      <img src="#" alt="#" class="popup__photo-fullimage">
+      <h2 class="popup__name-fullimage"></h2>
     </div>
+  </div>
 
     <script src="scripts/index.js"></script>
   </body>
