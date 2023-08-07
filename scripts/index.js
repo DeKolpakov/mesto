@@ -53,6 +53,66 @@ const fullImageButtonClose = popupFullImage.querySelector(".popup__button-close_
 const fullImageTitle = popupFullImage.querySelector(".popup__name-fullimage");
 const fullImagePhoto = popupFullImage.querySelector(".popup__photo-fullimage");
 
+//____________________POPUP________________________________
+
+const openPopup = (popupElement) => {
+  popupElement.classList.add("popup_opened");
+};
+
+const closePopup = (popupElement) => {
+  popupElement.classList.remove("popup_opened");
+};
+
+//____________________POPUP-PROFILE________________________________
+
+const lookupTextProfileInPopup = () => {
+  nameInputPopup.value = nameOutputProfile.textContent;
+  descriptionInputPopup.value = descriptionOutputProfile.textContent;
+};
+
+const openPopupProfile = () => {
+  lookupTextProfileInPopup();
+  openPopup(popupProfile);
+};
+
+const closePopupProfile = () => {
+  closePopup(popupProfile);
+};
+
+const closePopupProfileByOverlay = (event) => {
+  if (event.target === event.currentTarget) {
+    closePopup(popupProfile);
+  }
+};
+
+//____________________POPUP-FULL________________________________
+
+const closePopupFullimage = () => {
+  closePopup(popupFullImage);
+};
+
+const closeOverlayPopupFullimage = (event) => {
+  if (event.target === event.currentTarget) {
+    closePopupFullimage();
+  }
+};
+
+//__________________POPUP-ADD____________________________________
+
+const openedPopupAdd = () => {
+  openPopup(popupAddImage);
+};
+
+const closePopupAdd = () => {
+  closePopup(popupAddImage);
+};
+
+const closeOverlayPopupAdd = (event) => {
+  if (event.target === event.currentTarget) {
+    closePopupAdd();
+  }
+};
+
 //____________________EDIT-PROFILE________________________________
 
 function handleSubmitFormProfile(event) {
@@ -87,11 +147,11 @@ const createCard = (item) => {
   const toggleLike = (event) => {
     event.target.classList.toggle("galery__button-like_active");
   };
-  
+
   const removeCard = (event) => {
     event.target.closest(".galery__item").remove();
   };
-  
+
   const openFullImage = () => {
     fullImagePhoto.src = item.link;
     fullImageTitle.textContent = item.name;
@@ -119,68 +179,6 @@ const submitFormNewCard = (event) => {
 };
 
 renderCards();
-
-//____________________POPUP________________________________
-
-const openPopup = (popupName) => {
-  popupName.classList.toggle("popup_opened");
-};
-
-const closePopup = (popupName) => {
-  popupName.classList.toggle("popup_opened");
-};
-
-
-
-//____________________POPUP-PROFILE________________________________
-
-const lookupTextProfileInPopup = () => {
-  nameInputPopup.value = nameOutputProfile.textContent;
-  descriptionInputPopup.value = descriptionOutputProfile.textContent;
-};
-
-const openPopupProfile = () => {
-  lookupTextProfileInPopup();
-  openPopup(popupProfile);
-}
-
-const closePopupProfile = () => {
-  closePopup(popupProfile);
-}
-
-const closePopupProfileByOverlay = (event) => {
-  if (event.target === event.currentTarget) {
-    closePopup(popupProfile);
-  }
-}
-
-//____________________POPUP-FULL________________________________
-
-const closePopupFullimage = () => {
-  closePopup(popupFullImage);
-};
-
-const closeOverlayPopupFullimage = (event) => {
-  if (event.target === event.currentTarget) {
-    closePopupFullimage();
-  }
-}
-
-//__________________POPUP-ADD____________________________________
-
-const openedPopupAdd = () => {
-  openPopup(popupAddImage);
-}
-
-const closePopupAdd = () => {
-  closePopup(popupAddImage);
-}
-
-const closeOverlayPopupAdd = (event) => {
-  if (event.target === event.currentTarget) {
-    closePopupAdd();
-  }
-}
 
 //______________________________________________________________________
 
