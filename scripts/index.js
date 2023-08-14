@@ -32,21 +32,21 @@ const descriptionOutputProfile = document.querySelector(".profile__description")
 const buttonEditProfile = document.querySelector(".profile__button-open");
 
 const popupProfile = document.querySelector(".popup_type_profile");
-const formProfile = popupProfile.querySelector(".popup__form_type_profile");
+const profileForm = popupProfile.querySelector("#profile-form");
 const buttonCloseProfile = popupProfile.querySelector(".popup__button-close_type_profile");
-const nameInputPopup = formProfile.querySelector("#profile-name");
-const descriptionInputPopup = formProfile.querySelector("#profile-description");
+const nameInputPopup = profileForm.querySelector("#profile-name");
+const descriptionInputPopup = profileForm.querySelector("#profile-description");
 
 const popupAddImage = document.querySelector(".popup_type_addimage");
+const addImageForm = popupAddImage.querySelector("#addimage-form");
 const buttonAddImage = document.querySelector(".profile__button-add");
 const buttonCloseAddImage = document.querySelector(".popup__button-close_type_add");
+const addImageName = popupAddImage.querySelector("#image-name");
+const addImageLink = popupAddImage.querySelector("#image-link");
 
 const galery = document.querySelector(".galery");
 const templateGalery = document.querySelector(".template__galery-item");
 const galeryTitle = templateGalery.querySelector(".galery__title");
-
-const popupImageName = popupAddImage.querySelector("#image-name");
-const popupImageLink = popupAddImage.querySelector("#image-link");
 
 const popupFullImage = document.querySelector(".popup_type_fullimage");
 const fullImageButtonClose = popupFullImage.querySelector(".popup__button-close_type_fullimage");
@@ -81,19 +81,31 @@ const closePopupProfile = () => {
 
 const closePopupProfileByOverlay = (event) => {
   if (event.target === event.currentTarget) {
-    closePopup(popupProfile);
+    closePopupProfile();
+  }
+};
+
+const closePopupProfileByEsc = (event) => {
+  if (event.key === 'Escape') {
+    closePopupProfile();
   }
 };
 
 //____________________POPUP-FULL________________________________
 
-const closePopupFullimage = () => {
+const closePopupFullImage = () => {
   closePopup(popupFullImage);
 };
 
-const closeOverlayPopupFullimage = (event) => {
+const closeOverlayPopupFullImage = (event) => {
   if (event.target === event.currentTarget) {
-    closePopupFullimage();
+    closePopupFullImage();
+  }
+};
+
+const closePopupFullImageByEsc = (event) => {
+  if (event.key === 'Escape') {
+    closePopupFullImage();
   }
 };
 
@@ -103,8 +115,9 @@ const openedPopupAdd = () => {
   openPopup(popupAddImage);
 };
 
-const closePopupAdd = () => {
+const closePopupAdd = (evt) => {
   closePopup(popupAddImage);
+  addImageForm.reset()
 };
 
 const closeOverlayPopupAdd = (event) => {
@@ -113,9 +126,16 @@ const closeOverlayPopupAdd = (event) => {
   }
 };
 
+const closePopupAddByEsc = (event) => {
+  if (event.key === 'Escape') {
+    closePopupAdd();
+  }
+};
+
+
 //____________________EDIT-PROFILE________________________________
 
-function handleSubmitFormProfile(event) {
+function handleSubmitProfileForm(event) {
   event.preventDefault();
   nameOutputProfile.textContent = nameInputPopup.value;
   descriptionOutputProfile.textContent = descriptionInputPopup.value;
@@ -170,12 +190,9 @@ const createCard = (item) => {
 
 const submitFormNewCard = (event) => {
   event.preventDefault();
-
-  const newElement = createCard({ name: popupImageName.value, link: popupImageLink.value });
+  const newElement = createCard({ name: addImageName.value, link: addImageLink.value });
   galery.prepend(newElement);
-
   closePopupAdd();
-  event.target.reset();
 };
 
 renderCards();
@@ -185,14 +202,17 @@ renderCards();
 buttonEditProfile.addEventListener("click", openPopupProfile);
 buttonCloseProfile.addEventListener("click", closePopupProfile);
 popupProfile.addEventListener("click", closePopupProfileByOverlay);
+document.addEventListener("keydown", closePopupProfileByEsc);
 
-fullImageButtonClose.addEventListener("click", closePopupFullimage);
-popupFullImage.addEventListener("click", closeOverlayPopupFullimage);
+fullImageButtonClose.addEventListener("click", closePopupFullImage);
+popupFullImage.addEventListener("click", closeOverlayPopupFullImage);
+document.addEventListener("keydown", closePopupFullImageByEsc);
 
 buttonAddImage.addEventListener("click", openedPopupAdd);
 buttonCloseAddImage.addEventListener("click", closePopupAdd);
 popupAddImage.addEventListener("click", closeOverlayPopupAdd);
+document.addEventListener("keydown", closePopupAddByEsc);
 
-formProfile.addEventListener("submit", handleSubmitFormProfile);
+profileForm.addEventListener("submit", handleSubmitProfileForm);
 
 popupAddImage.addEventListener("submit", submitFormNewCard);
