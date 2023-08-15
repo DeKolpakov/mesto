@@ -8,7 +8,6 @@ const enableValidation = ({formSelector, inputSelector, submitButtonSelector, in
     });
     setEventListeners(formElement, inputSelector, submitButtonSelector, inactiveButtonClass, activeButtonClass, inputErrorClass, errorClass);
   });
-  //console.log();
 };
 
 //______________________добавление-ошибки____________________
@@ -24,14 +23,12 @@ const validationInput = (formElement, inputElement, inputErrorClass, errorClass)
     inputError.classList.add(errorClass);
     inputError.textContent = inputElement.validationMessage;
   }
-  //console.log();
 };
 
 //_____________________валидация-кнопки__________________________________
 
 const submitButtonState = (inputsAll, submitButton, inactiveButtonClass, activeButtonClass) => {
   const invalidInputs = inputsAll.some((inputElement) => !inputElement.validity.valid);
-  //console.log();
   if (invalidInputs) {
     submitButton.setAttribute("disabled", true);
     submitButton.classList.add(inactiveButtonClass);
@@ -57,7 +54,6 @@ const setEventListeners = (formElement, inputSelector, submitButtonSelector, ina
       submitButtonState(inputsAll, submitButton, inactiveButtonClass, activeButtonClass);
     });
   });
-  //console.log();
 };
 
 //_________________________________________________________________________
