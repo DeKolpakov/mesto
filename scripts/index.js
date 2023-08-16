@@ -32,31 +32,41 @@ const descriptionOutputProfile = document.querySelector(".profile__description")
 const buttonEditProfile = document.querySelector(".profile__button-open");
 
 const popupProfile = document.querySelector(".popup_type_profile");
-const profileForm = popupProfile.querySelector("#profile-form");
+const formProfile = popupProfile.querySelector("#profile-form");
 const buttonCloseProfile = popupProfile.querySelector(".popup__button-close_type_profile");
-const nameInputPopup = profileForm.querySelector("#profile-name");
-const descriptionInputPopup = profileForm.querySelector("#profile-description");
+const nameInputPopup = formProfile.querySelector("#profile-name");
+const descriptionInputPopup = formProfile.querySelector("#profile-description");
 
 const popupAddImage = document.querySelector(".popup_type_addimage");
-const addImageForm = popupAddImage.querySelector("#addimage-form");
+const formAddImage = popupAddImage.querySelector("#addimage-form");
 const buttonAddImage = document.querySelector(".profile__button-add");
 const buttonCloseAddImage = document.querySelector(".popup__button-close_type_add");
-const addImageName = popupAddImage.querySelector("#image-name");
-const addImageLink = popupAddImage.querySelector("#image-link");
+const nameAddImageForm = popupAddImage.querySelector("#image-name");
+const linkAddImageForm = popupAddImage.querySelector("#image-link");
 
 const galery = document.querySelector(".galery");
 const templateGalery = document.querySelector(".template__galery-item");
 const galeryTitle = templateGalery.querySelector(".galery__title");
 
 const popupFullImage = document.querySelector(".popup_type_fullimage");
-const fullImageButtonClose = popupFullImage.querySelector(".popup__button-close_type_fullimage");
-const fullImageTitle = popupFullImage.querySelector(".popup__name-fullimage");
-const fullImagePhoto = popupFullImage.querySelector(".popup__photo-fullimage");
+const buttonCloseFullImage = popupFullImage.querySelector(".popup__button-close_type_fullimage");
+const titleFullImage = popupFullImage.querySelector(".popup__name-fullimage");
+const photoFullImage = popupFullImage.querySelector(".popup__photo-fullimage");
 
 //____________________POPUP________________________________
 
 const openPopup = (popupElement) => {
   popupElement.classList.add("popup_opened");
+
+  const closePopupByEsc = (event) => {
+    if (event.key === "Escape") {
+      closePopup(popupElement);
+    }
+  };
+
+  if (popupElement.classList.contains("popup_opened")) {
+    document.addEventListener("keydown", closePopupByEsc);
+  }
 };
 
 const closePopup = (popupElement) => {
@@ -85,12 +95,6 @@ const closePopupProfileByOverlay = (event) => {
   }
 };
 
-const closePopupProfileByEsc = (event) => {
-  if (event.key === 'Escape') {
-    closePopupProfile();
-  }
-};
-
 //____________________POPUP-FULL________________________________
 
 const closePopupFullImage = () => {
@@ -103,12 +107,6 @@ const closeOverlayPopupFullImage = (event) => {
   }
 };
 
-const closePopupFullImageByEsc = (event) => {
-  if (event.key === 'Escape') {
-    closePopupFullImage();
-  }
-};
-
 //__________________POPUP-ADD____________________________________
 
 const openedPopupAdd = () => {
@@ -117,7 +115,7 @@ const openedPopupAdd = () => {
 
 const closePopupAdd = (evt) => {
   closePopup(popupAddImage);
-  addImageForm.reset()
+  formAddImage.reset();
 };
 
 const closeOverlayPopupAdd = (event) => {
@@ -125,13 +123,6 @@ const closeOverlayPopupAdd = (event) => {
     closePopupAdd();
   }
 };
-
-const closePopupAddByEsc = (event) => {
-  if (event.key === 'Escape') {
-    closePopupAdd();
-  }
-};
-
 
 //____________________EDIT-PROFILE________________________________
 
@@ -157,8 +148,8 @@ const createCard = (item) => {
 
   const title = element.querySelector(".galery__title");
   const image = element.querySelector(".galery__photo");
-  const likeButton = element.querySelector(".galery__button-like");
-  const deleteButton = element.querySelector(".galery__button-delete");
+  const buttonLike = element.querySelector(".galery__button-like");
+  const buttonDelete = element.querySelector(".galery__button-delete");
 
   title.textContent = item.name;
   image.src = item.link;
@@ -173,14 +164,14 @@ const createCard = (item) => {
   };
 
   const openFullImage = () => {
-    fullImagePhoto.src = item.link;
-    fullImageTitle.textContent = item.name;
-    fullImagePhoto.alt = item.name;
+    photoFullImage.src = item.link;
+    titleFullImage.textContent = item.name;
+    photoFullImage.alt = item.name;
     openPopup(popupFullImage);
   };
 
-  deleteButton.addEventListener("click", removeCard);
-  likeButton.addEventListener("click", toggleLike);
+  buttonDelete.addEventListener("click", removeCard);
+  buttonLike.addEventListener("click", toggleLike);
   image.addEventListener("click", openFullImage);
 
   return element;
@@ -190,7 +181,7 @@ const createCard = (item) => {
 
 const submitFormNewCard = (event) => {
   event.preventDefault();
-  const newElement = createCard({ name: addImageName.value, link: addImageLink.value });
+  const newElement = createCard({name: nameAddImageForm.value, link: linkAddImageForm.value});
   galery.prepend(newElement);
   closePopupAdd();
 };
@@ -202,17 +193,14 @@ renderCards();
 buttonEditProfile.addEventListener("click", openPopupProfile);
 buttonCloseProfile.addEventListener("click", closePopupProfile);
 popupProfile.addEventListener("click", closePopupProfileByOverlay);
-document.addEventListener("keydown", closePopupProfileByEsc);
 
-fullImageButtonClose.addEventListener("click", closePopupFullImage);
+buttonCloseFullImage.addEventListener("click", closePopupFullImage);
 popupFullImage.addEventListener("click", closeOverlayPopupFullImage);
-document.addEventListener("keydown", closePopupFullImageByEsc);
 
 buttonAddImage.addEventListener("click", openedPopupAdd);
 buttonCloseAddImage.addEventListener("click", closePopupAdd);
 popupAddImage.addEventListener("click", closeOverlayPopupAdd);
-document.addEventListener("keydown", closePopupAddByEsc);
-
-profileForm.addEventListener("submit", handleSubmitProfileForm);
 
 popupAddImage.addEventListener("submit", submitFormNewCard);
+
+formProfile.addEventListener("submit", handleSubmitProfileForm);

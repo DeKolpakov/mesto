@@ -40,13 +40,23 @@ const submitButtonState = (inputsAll, submitButton, inactiveButtonClass, activeB
   }
 };
 
+//_________________________________________________________________________
+
+const validateButtonSubmit = (submitButtonElement, inactiveButtonClass, activeButtonClass) => {
+  submitButtonElement.setAttribute("disabled", true);
+  submitButtonElement.classList.add(inactiveButtonClass);
+  submitButtonElement.classList.remove(activeButtonClass);
+};
+
 //_____________________слушатели_________________________________________
 
 const setEventListeners = (formElement, inputSelector, submitButtonSelector, inactiveButtonClass, activeButtonClass, inputErrorClass, errorClass) => {
   const inputsAll = Array.from(formElement.querySelectorAll(inputSelector));
   const submitButton = formElement.querySelector(submitButtonSelector);
 
-  submitButtonState(inputsAll, submitButton, inactiveButtonClass, activeButtonClass);
+  formElement.addEventListener("submit", () => {
+    validateButtonSubmit(submitButton, inactiveButtonClass, activeButtonClass);
+  });
 
   inputsAll.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
@@ -55,8 +65,6 @@ const setEventListeners = (formElement, inputSelector, submitButtonSelector, ina
     });
   });
 };
-
-//_________________________________________________________________________
 
 //______________________запуск-валидации______________________________
 
