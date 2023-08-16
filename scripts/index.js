@@ -57,20 +57,19 @@ const photoFullImage = popupFullImage.querySelector(".popup__photo-fullimage");
 
 const openPopup = (popupElement) => {
   popupElement.classList.add("popup_opened");
-
-  const closePopupByEsc = (event) => {
-    if (event.key === "Escape") {
-      closePopup(popupElement);
-    }
-  };
-
-  if (popupElement.classList.contains("popup_opened")) {
-    document.addEventListener("keydown", closePopupByEsc);
-  }
+  document.addEventListener("keydown", closePopupByEsc);
 };
 
 const closePopup = (popupElement) => {
   popupElement.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closePopupByEsc);
+};
+
+const closePopupByEsc = (event) => {
+  if (event.key === "Escape") {
+    const popupOpened = document.querySelector(".popup_opened");
+    closePopup(popupOpened);
+  }
 };
 
 //____________________POPUP-PROFILE________________________________
