@@ -1,29 +1,6 @@
-const initialCards = [
-  {
-    name: "порт Батуми",
-    link: "./images/galery/batumi.png",
-  },
-  {
-    name: "Калимантан",
-    link: "./images/galery/borneo.png",
-  },
-  {
-    name: "Португалия",
-    link: "./images/galery/caba-roca.png",
-  },
-  {
-    name: "Мальдивы",
-    link: "./images/galery/maldives.png",
-  },
-  {
-    name: "Раджа-Ампат архипелаг",
-    link: "./images/galery/raja_ampat.png",
-  },
-  {
-    name: "Индонезия",
-    link: "./images/galery/indonesia.png",
-  },
-];
+import {initialCards} from "./initialCard.js";
+import {Card} from "./Card.js";
+import {FormValidator, validationConfig} from "./FormValidator.js";
 
 //______________________________________________________________________
 
@@ -45,8 +22,6 @@ const nameAddImageForm = popupAddImage.querySelector("#image-name");
 const linkAddImageForm = popupAddImage.querySelector("#image-link");
 
 const galery = document.querySelector(".galery");
-const templateGalery = document.querySelector(".template__galery-item");
-const galeryTitle = templateGalery.querySelector(".galery__title");
 
 const popupFullImage = document.querySelector(".popup_type_fullimage");
 const buttonCloseFullImage = popupFullImage.querySelector(".popup__button-close_type_fullimage");
@@ -74,11 +49,6 @@ const closePopupByEsc = (event) => {
 
 //____________________POPUP-PROFILE________________________________
 
-const lookupTextProfileInPopup = () => {
-  nameInputPopup.value = nameOutputProfile.textContent;
-  descriptionInputPopup.value = descriptionOutputProfile.textContent;
-};
-
 const openPopupProfile = () => {
   lookupTextProfileInPopup();
   openPopup(popupProfile);
@@ -95,6 +65,13 @@ const closePopupProfileByOverlay = (event) => {
 };
 
 //____________________POPUP-FULL________________________________
+
+const openFullImage = (link, name) => {
+  photoFullImage.src = link;
+  titleFullImage.textContent = name;
+  photoFullImage.alt = name;
+  openPopup(popupFullImage);
+};
 
 const closePopupFullImage = () => {
   closePopup(popupFullImage);
@@ -123,7 +100,20 @@ const closeOverlayPopupAdd = (event) => {
   }
 };
 
+//____________________VALIDATION_________________________________
+
+const validatorProfileForm = new FormValidator(validationConfig, formProfile);
+const validatorAddForm = new FormValidator(validationConfig, formAddImage);
+
+validatorAddForm.enableValidation();
+validatorProfileForm.enableValidation();
+
 //____________________EDIT-PROFILE________________________________
+
+const lookupTextProfileInPopup = () => {
+  nameInputPopup.value = nameOutputProfile.textContent;
+  descriptionInputPopup.value = descriptionOutputProfile.textContent;
+};
 
 function handleSubmitProfileForm(event) {
   event.preventDefault();
@@ -132,17 +122,63 @@ function handleSubmitProfileForm(event) {
   closePopupProfile();
 }
 
-//____________________RENDER________________________
+//____________________CREATE_________________________________
+
+const createNewCard = (data, cardSelector) => {
+  const newCardElement = new Card(data, cardSelector, openFullImage);
+  return newCardElement.createCard();
+};
+
+const addCard = (data, cardSelector) => {
+  const cardElement = createNewCard(data, cardSelector);
+
+  galery.prepend(cardElement);
+};
+
+//_______________________NEW_CARD_______________________________________
+
+const submitFormNewCard = (event) => {
+  event.preventDefault();
+  const data = {
+    name: nameAddImageForm.value,
+    link: linkAddImageForm.value,
+  };
+  addCard(data, ".template__galery-item");
+  closePopupAdd();
+};
+
+//______________________________RENDER-CARDS_____________________________________________
 
 const renderCards = () => {
-  initialCards.forEach((item) => {
-    galery.append(createCard(item));
+  initialCards.forEach((data) => {
+    addCard(data, ".template__galery-item");
   });
 };
 
+renderCards();
+
+//______________________________________________________________________
+
+buttonEditProfile.addEventListener("click", openPopupProfile);
+buttonCloseProfile.addEventListener("click", closePopupProfile);
+popupProfile.addEventListener("click", closePopupProfileByOverlay);
+
+buttonCloseFullImage.addEventListener("click", closePopupFullImage);
+popupFullImage.addEventListener("click", closeOverlayPopupFullImage);
+
+buttonAddImage.addEventListener("click", openedPopupAdd);
+buttonCloseAddImage.addEventListener("click", closePopupAdd);
+popupAddImage.addEventListener("click", closeOverlayPopupAdd);
+
+popupAddImage.addEventListener("submit", submitFormNewCard);
+
+formProfile.addEventListener("submit", handleSubmitProfileForm);
+
+//export {openPopup, popupFullImage, photoFullImage, titleFullImage};
+
 //______________________INIT____________________________________
 
-const createCard = (item) => {
+/* const createCard = (item) => {
   const element = templateGalery.content.cloneNode(true);
 
   const title = element.querySelector(".galery__title");
@@ -174,32 +210,4 @@ const createCard = (item) => {
   image.addEventListener("click", openFullImage);
 
   return element;
-};
-
-//_______________________NEW_CARD_______________________________________
-
-const submitFormNewCard = (event) => {
-  event.preventDefault();
-  const newElement = createCard({name: nameAddImageForm.value, link: linkAddImageForm.value});
-  galery.prepend(newElement);
-  closePopupAdd();
-};
-
-renderCards();
-
-//______________________________________________________________________
-
-buttonEditProfile.addEventListener("click", openPopupProfile);
-buttonCloseProfile.addEventListener("click", closePopupProfile);
-popupProfile.addEventListener("click", closePopupProfileByOverlay);
-
-buttonCloseFullImage.addEventListener("click", closePopupFullImage);
-popupFullImage.addEventListener("click", closeOverlayPopupFullImage);
-
-buttonAddImage.addEventListener("click", openedPopupAdd);
-buttonCloseAddImage.addEventListener("click", closePopupAdd);
-popupAddImage.addEventListener("click", closeOverlayPopupAdd);
-
-popupAddImage.addEventListener("submit", submitFormNewCard);
-
-formProfile.addEventListener("submit", handleSubmitProfileForm);
+}; */

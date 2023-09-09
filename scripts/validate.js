@@ -1,4 +1,4 @@
-//______________________функция-включения-валидации______________________________
+/* //______________________функция-включения-валидации______________________________
 
 const enableValidation = ({formSelector, inputSelector, submitButtonSelector, inactiveButtonClass, activeButtonClass, inputErrorClass, errorClass}) => {
   const formsAll = Array.from(document.querySelectorAll(formSelector));
@@ -77,6 +77,10 @@ enableValidation({
   inputErrorClass: "popup__input_error",
   errorClass: "popup__input-span_error",
 });
+ */
+
+
+
 
 /* 
 //____________________валидация по вебинару________________________________
