@@ -1,12 +1,8 @@
-//import { openPopup, popupFullImage, photoFullImage, titleFullImage } from "./index.js";
-
 export class Card {
   constructor(data, cardSelector, openFullImage) {
     this._title = data.name;
     this._image = data.link;
-
     this._cardSelector = cardSelector;
-
     this._openFullImage = openFullImage;
   }
   //______________________________________________________________________________________
@@ -29,13 +25,6 @@ export class Card {
   _removeCard(evt) {
     evt.target.closest(".galery__item").remove();
   }
-
-  /* _openFullImage() {
-    photoFullImage.src = this._image;
-    titleFullImage.textContent = this._title;
-    photoFullImage.alt = this._title;
-    openPopup(popupFullImage);
-  } */
 
   //______________________________________________________________________________________
 
@@ -61,3 +50,12 @@ export class Card {
     return this._element;
   }
 }
+
+//import { openPopup, popupFullImage, photoFullImage, titleFullImage } from "./index.js";
+
+/* _openFullImage() {
+    photoFullImage.src = this._image;
+    titleFullImage.textContent = this._title;
+    photoFullImage.alt = this._title;
+    openPopup(popupFullImage);
+  } */

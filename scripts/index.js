@@ -2,7 +2,7 @@ import {initialCards} from "./initialCard.js";
 import {Card} from "./Card.js";
 import {FormValidator, validationConfig} from "./FormValidator.js";
 
-//______________________________________________________________________
+//__CONST_______________________________________________________________________________
 
 const nameOutputProfile = document.querySelector(".profile__name");
 const descriptionOutputProfile = document.querySelector(".profile__description");
@@ -28,7 +28,7 @@ const buttonCloseFullImage = popupFullImage.querySelector(".popup__button-close_
 const titleFullImage = popupFullImage.querySelector(".popup__name-fullimage");
 const photoFullImage = popupFullImage.querySelector(".popup__photo-fullimage");
 
-//____________________POPUP________________________________
+//__POPUP_______________________________________________________________________________
 
 const openPopup = (popupElement) => {
   popupElement.classList.add("popup_opened");
@@ -47,7 +47,7 @@ const closePopupByEsc = (event) => {
   }
 };
 
-//____________________POPUP-PROFILE________________________________
+//__POPUP-PROFILE________________________________________________________________________
 
 const openPopupProfile = () => {
   lookupTextProfileInPopup();
@@ -64,7 +64,7 @@ const closePopupProfileByOverlay = (event) => {
   }
 };
 
-//____________________POPUP-FULL________________________________
+//___POPUP-FULLIMAGE______________________________________________________________________
 
 const openFullImage = (link, name) => {
   photoFullImage.src = link;
@@ -83,7 +83,7 @@ const closeOverlayPopupFullImage = (event) => {
   }
 };
 
-//__________________POPUP-ADD____________________________________
+//___POPUP-ADD___________________________________________________________________________
 
 const openedPopupAdd = () => {
   openPopup(popupAddImage);
@@ -100,7 +100,7 @@ const closeOverlayPopupAdd = (event) => {
   }
 };
 
-//____________________VALIDATION_________________________________
+//__VALIDATION___________________________________________________________________________
 
 const validatorProfileForm = new FormValidator(validationConfig, formProfile);
 const validatorAddForm = new FormValidator(validationConfig, formAddImage);
@@ -108,21 +108,21 @@ const validatorAddForm = new FormValidator(validationConfig, formAddImage);
 validatorAddForm.enableValidation();
 validatorProfileForm.enableValidation();
 
-//____________________EDIT-PROFILE________________________________
+//__EDIT-PROFILE_________________________________________________________________________
 
 const lookupTextProfileInPopup = () => {
   nameInputPopup.value = nameOutputProfile.textContent;
   descriptionInputPopup.value = descriptionOutputProfile.textContent;
 };
 
-function handleSubmitProfileForm(event) {
+function submitProfileForm(event) {
   event.preventDefault();
   nameOutputProfile.textContent = nameInputPopup.value;
   descriptionOutputProfile.textContent = descriptionInputPopup.value;
   closePopupProfile();
 }
 
-//____________________CREATE_________________________________
+//__NEWCARD-CREATE________________________________________________________________________
 
 const createNewCard = (data, cardSelector) => {
   const newCardElement = new Card(data, cardSelector, openFullImage);
@@ -135,7 +135,7 @@ const addCard = (data, cardSelector) => {
   galery.prepend(cardElement);
 };
 
-//_______________________NEW_CARD_______________________________________
+//___NEWCARD-SUBMIT______________________________________________________________________
 
 const submitFormNewCard = (event) => {
   event.preventDefault();
@@ -147,7 +147,7 @@ const submitFormNewCard = (event) => {
   closePopupAdd();
 };
 
-//______________________________RENDER-CARDS_____________________________________________
+//__RENDER______________________________________________________________________________
 
 const renderCards = () => {
   initialCards.forEach((data) => {
@@ -157,7 +157,7 @@ const renderCards = () => {
 
 renderCards();
 
-//______________________________________________________________________
+//__LISTENERS___________________________________________________________________________
 
 buttonEditProfile.addEventListener("click", openPopupProfile);
 buttonCloseProfile.addEventListener("click", closePopupProfile);
@@ -172,11 +172,11 @@ popupAddImage.addEventListener("click", closeOverlayPopupAdd);
 
 popupAddImage.addEventListener("submit", submitFormNewCard);
 
-formProfile.addEventListener("submit", handleSubmitProfileForm);
+formProfile.addEventListener("submit", submitProfileForm);
 
 //export {openPopup, popupFullImage, photoFullImage, titleFullImage};
 
-//______________________INIT____________________________________
+//______________________________________________________________________________________
 
 /* const createCard = (item) => {
   const element = templateGalery.content.cloneNode(true);
