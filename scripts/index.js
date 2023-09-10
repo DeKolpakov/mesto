@@ -1,32 +1,27 @@
 import {initialCards} from "./initialCard.js";
 import {Card} from "./Card.js";
 import {FormValidator, validationConfig} from "./FormValidator.js";
-
-//__CONST_______________________________________________________________________________
-
-const nameOutputProfile = document.querySelector(".profile__name");
-const descriptionOutputProfile = document.querySelector(".profile__description");
-const buttonEditProfile = document.querySelector(".profile__button-open");
-
-const popupProfile = document.querySelector(".popup_type_profile");
-const formProfile = popupProfile.querySelector("#profile-form");
-const buttonCloseProfile = popupProfile.querySelector(".popup__button-close_type_profile");
-const nameInputPopup = formProfile.querySelector("#profile-name");
-const descriptionInputPopup = formProfile.querySelector("#profile-description");
-
-const popupAddImage = document.querySelector(".popup_type_addimage");
-const formAddImage = popupAddImage.querySelector("#addimage-form");
-const buttonAddImage = document.querySelector(".profile__button-add");
-const buttonCloseAddImage = document.querySelector(".popup__button-close_type_add");
-const nameAddImageForm = popupAddImage.querySelector("#image-name");
-const linkAddImageForm = popupAddImage.querySelector("#image-link");
-
-const galery = document.querySelector(".galery");
-
-const popupFullImage = document.querySelector(".popup_type_fullimage");
-const buttonCloseFullImage = popupFullImage.querySelector(".popup__button-close_type_fullimage");
-const titleFullImage = popupFullImage.querySelector(".popup__name-fullimage");
-const photoFullImage = popupFullImage.querySelector(".popup__photo-fullimage");
+import {
+  nameOutputProfile,
+  descriptionOutputProfile,
+  buttonEditProfile,
+  popupProfile,
+  formProfile,
+  buttonCloseProfile,
+  nameInputPopup,
+  descriptionInputPopup,
+  popupAddImage,
+  formAddImage,
+  buttonAddImage,
+  buttonCloseAddImage,
+  nameAddImageForm,
+  linkAddImageForm,
+  galery,
+  popupFullImage,
+  buttonCloseFullImage,
+  titleFullImage,
+  photoFullImage,
+} from "./constants.js";
 
 //__POPUP_______________________________________________________________________________
 
@@ -144,6 +139,7 @@ const submitFormNewCard = (event) => {
     link: linkAddImageForm.value,
   };
   addCard(data, ".template__galery-item");
+  validatorAddForm.disableSubmitButton();
   closePopupAdd();
 };
 
@@ -173,41 +169,3 @@ popupAddImage.addEventListener("click", closeOverlayPopupAdd);
 popupAddImage.addEventListener("submit", submitFormNewCard);
 
 formProfile.addEventListener("submit", submitProfileForm);
-
-//export {openPopup, popupFullImage, photoFullImage, titleFullImage};
-
-//______________________________________________________________________________________
-
-/* const createCard = (item) => {
-  const element = templateGalery.content.cloneNode(true);
-
-  const title = element.querySelector(".galery__title");
-  const image = element.querySelector(".galery__photo");
-  const buttonLike = element.querySelector(".galery__button-like");
-  const buttonDelete = element.querySelector(".galery__button-delete");
-
-  title.textContent = item.name;
-  image.src = item.link;
-  image.alt = item.name;
-
-  const toggleLike = (event) => {
-    event.target.classList.toggle("galery__button-like_active");
-  };
-
-  const removeCard = (event) => {
-    event.target.closest(".galery__item").remove();
-  };
-
-  const openFullImage = () => {
-    photoFullImage.src = item.link;
-    titleFullImage.textContent = item.name;
-    photoFullImage.alt = item.name;
-    openPopup(popupFullImage);
-  };
-
-  buttonDelete.addEventListener("click", removeCard);
-  buttonLike.addEventListener("click", toggleLike);
-  image.addEventListener("click", openFullImage);
-
-  return element;
-}; */
