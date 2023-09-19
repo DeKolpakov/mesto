@@ -25,7 +25,7 @@ import {
 
 //__POPUP_______________________________________________________________________________
 
-const openPopup = (popupElement) => {
+/* const openPopup = (popupElement) => {
   popupElement.classList.add("popup_opened");
   document.addEventListener("keydown", closePopupByEsc);
 };
@@ -40,11 +40,11 @@ const closePopupByEsc = (event) => {
     const popupOpened = document.querySelector(".popup_opened");
     closePopup(popupOpened);
   }
-};
+}; */
 
 //__POPUP-PROFILE________________________________________________________________________
 
-const openPopupProfile = () => {
+c/* onst openPopupProfile = () => {
   lookupTextProfileInPopup();
   openPopup(popupProfile);
 };
@@ -57,18 +57,18 @@ const closePopupProfileByOverlay = (event) => {
   if (event.target === event.currentTarget) {
     closePopupProfile();
   }
-};
+}; */
 
 //___POPUP-FULLIMAGE______________________________________________________________________
 
-const openFullImage = (link, name) => {
+/* const openFullImage = (link, name) => {
   photoFullImage.src = link;
   titleFullImage.textContent = name;
   photoFullImage.alt = name;
   openPopup(popupFullImage);
-};
+}; */
 
-const closePopupFullImage = () => {
+/* const closePopupFullImage = () => {
   closePopup(popupFullImage);
 };
 
@@ -76,7 +76,7 @@ const closeOverlayPopupFullImage = (event) => {
   if (event.target === event.currentTarget) {
     closePopupFullImage();
   }
-};
+}; */
 
 //___POPUP-ADD___________________________________________________________________________
 
@@ -89,11 +89,11 @@ const closePopupAdd = (evt) => {
   formAddImage.reset();
 };
 
-const closeOverlayPopupAdd = (event) => {
+/* const closeOverlayPopupAdd = (event) => {
   if (event.target === event.currentTarget) {
     closePopupAdd();
   }
-};
+}; */
 
 //__VALIDATION___________________________________________________________________________
 
@@ -124,11 +124,11 @@ const createNewCard = (data, cardSelector) => {
   return newCardElement.createCard();
 };
 
-const addCard = (data, cardSelector) => {
+/* const addCard = (data, cardSelector) => {
   const cardElement = createNewCard(data, cardSelector);
 
   galery.prepend(cardElement);
-};
+}; */
 
 //___NEWCARD-SUBMIT______________________________________________________________________
 
@@ -145,26 +145,26 @@ const submitFormNewCard = (event) => {
 
 //__RENDER______________________________________________________________________________
 
-const renderCards = () => {
+const rendererCards = () => {
   initialCards.forEach((data) => {
     addCard(data, ".template__galery-item");
   });
 };
 
-renderCards();
+rendererCards();
 
 //__LISTENERS___________________________________________________________________________
 
 buttonEditProfile.addEventListener("click", openPopupProfile);
-buttonCloseProfile.addEventListener("click", closePopupProfile);
-popupProfile.addEventListener("click", closePopupProfileByOverlay);
+//buttonCloseProfile.addEventListener("click", closePopupProfile);
+//popupProfile.addEventListener("click", closePopupProfileByOverlay);
 
 buttonCloseFullImage.addEventListener("click", closePopupFullImage);
 popupFullImage.addEventListener("click", closeOverlayPopupFullImage);
 
 buttonAddImage.addEventListener("click", openedPopupAdd);
-buttonCloseAddImage.addEventListener("click", closePopupAdd);
-popupAddImage.addEventListener("click", closeOverlayPopupAdd);
+//buttonCloseAddImage.addEventListener("click", closePopupAdd);
+//popupAddImage.addEventListener("click", closeOverlayPopupAdd);
 
 popupAddImage.addEventListener("submit", submitFormNewCard);
 
