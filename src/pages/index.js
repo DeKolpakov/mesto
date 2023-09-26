@@ -25,8 +25,8 @@ import {
 //__EDIT-PROFILE_________________________________________________________________________
 
 const editProfilePopup = new PopupWithForm(popupProfile, {
-  callbackSubmitForm: () => {
-    userInfo.setUserInfo(nameInputPopup, descriptionInputPopup);
+  callbackSubmitForm: (formData) => {
+    userInfo.setUserInfo(formData);
   },
 });
 
@@ -35,7 +35,6 @@ const editProfilePopup = new PopupWithForm(popupProfile, {
 const addImagePopup = new PopupWithForm(popupAddImage, {
   callbackSubmitForm: (formData) => {
     renderCard.addItem(createNewCard(formData));
-    //console.log(formData)
   },
 });
 
@@ -63,7 +62,6 @@ const createNewCard = (itemCard) => {
     },
     ".template__galery-item"
   );
-  //console.log("sozdanie",  newCardElement.createCard())
   return newCardElement.createCard();
 };
 
@@ -73,7 +71,6 @@ const renderCard = new Section(
   {
     cardList: initialCards,
     renderer: (itemCard) => {
-      //console.log("renderer", itemCard)
       renderCard.addItem(createNewCard(itemCard));
     },
   },
@@ -93,8 +90,7 @@ validatorProfileForm.enableValidation();
 //__LISTENERS___________________________________________________________________________
 
 const openProfilePopup = () => {
-  const {name, description} = userInfo.getUserInfo();
-  //popupProfile.classList.add("popup_opened");
+  const {name, description} = userInfo.getUserInfo(name, description);
   editProfilePopup.openPopup();
   nameInputPopup.value = name;
   descriptionInputPopup.value = description;
@@ -107,57 +103,3 @@ const openAddImagePopup = () => {
 
 buttonEditProfile.addEventListener("click", openProfilePopup);
 buttonAddImage.addEventListener("click", openAddImagePopup);
-
-//__POPUP_______________________________________________________________________________
-
-/* const openFullImage = (link, name) => {
-  popupImage.open(link, name);
-}; */
-
-//___POPUP-ADD___________________________________________________________________________
-
-/* const editProfilePopup = new PopupWithForm(".popup_type_profile", {
-  callbackSubmitForm: (profileData) => {
-    userInfo.setUserInfo({
-      name: profileData.name,
-      description: profileData.description,
-    });
-    popupProfile.close();
-  },
-}); */
-
-//___NEWCARD-SUBMIT______________________________________________________________________
-
-/* const submitNewCard = new PopupWithForm(".popup_type_addimage", {
-  callbackSubmitForm: () => {
-    initialRender.addItem(
-      createNewCard(
-        {
-          name: nameAddImageForm.value,
-          link: linkAddImageForm.value,
-        },
-        ".template__galery-item",
-        openFullImage
-      )
-    );
-    submitNewCard.close();
-  },
-});
-
-submitNewCard.setEventListeners(); */
-
-//__INITIALRENDER________________________________________________________________________
-
-/* const initialRender = new Section(
-  {
-    item: initialCards,
-    renderer: (data) => {
-      const cardElement = new Card(data, ".template__galery-item", openFullImage);
-      initialRender.addItem(cardElement.createCard());
-    },
-  },
-  ".galery"
-);
-
-initialRender.rendererCards();
- */

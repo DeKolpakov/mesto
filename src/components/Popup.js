@@ -1,25 +1,21 @@
 export class Popup {
   constructor(popup) {
-    //this._popupItem = document.querySelector(popupSelector);
     this._popup = popup;
+    this._handleEscClose = this._handleEscClose.bind(this);
   }
 
   openPopup() {
-    //console.log(this._popup)
     this._popup.classList.add("popup_opened");
-    document.addEventListener("keydown", this._handleEscClose.bind(this));
+    document.addEventListener("keydown", this._handleEscClose);
   }
 
   close() {
-    //console.log(this._popup)
     this._popup.classList.remove("popup_opened");
-    document.removeEventListener("keydown", this._handleEscClose.bind(this));
+    document.removeEventListener("keydown", this._handleEscClose);
   }
 
   _handleEscClose(evt) {
     if (evt.key === "Escape") {
-      /*  const popupOpened = document.querySelector(".popup_opened");
-      close(popupOpened); */
       this.close();
     }
   }
@@ -38,9 +34,3 @@ export class Popup {
     });
   }
 }
-
-/* const closeProfileByOverlay = (event) => {
-    if (event.target === event.currentTarget) {
-      closeProfile();
-    }
-  }; */
