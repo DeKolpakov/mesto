@@ -11,10 +11,8 @@ export class UserInfo {
     };
   }
 
-  setUserInfo(name, description) {
-    //console.log(name)
-    //console.log(description)
-    this._nameProfile.textContent = name.value;
-    this._descriptionProfile.textContent = description.value;
+  setUserInfo(formData) {
+    this._nameProfile.textContent = formData.name;
+    this._descriptionProfile.textContent = formData.description;
   }
 }
