@@ -23,7 +23,7 @@
 }
 
 .popup__input:nth-of-type(1) {
-  margin: 48px 36px 0px 36px;
+  margin: 10px 36px 0px 36px;
 }
 
 .popup__input:nth-of-type(2) {
@@ -32,7 +32,7 @@
 
 @media screen and (max-width: 580px) {
   .popup__input:nth-child(1) {
-    margin: 75px 22px 0px 22px;
+    margin: 37px 22px 0px 22px;
   }
 
   .popup__input:nth-child(2) {
