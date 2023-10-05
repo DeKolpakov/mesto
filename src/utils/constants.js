@@ -21,3 +21,10 @@ export const popupFullImage = document.querySelector(".popup_type_fullimage");
 export const buttonCloseFullImage = document.querySelector(".popup__button-close_type_fullimage");
 export const titleFullImage = document.querySelector(".popup__name-fullimage");
 export const photoFullImage = document.querySelector(".popup__photo-fullimage");
+
+export const popupAvatar = document.querySelector(".popup_type_avatar");
+export const buttonAvatar = document.querySelector(".avatar__overlay-icon");
+export const formAvatar = document.querySelector("#avatar_form");
+export const profileAvatar = document.querySelector("#avatar_image");
+
+export const popupDeleteCard = document.querySelector(".popup_type_delete");

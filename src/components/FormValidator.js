@@ -24,7 +24,7 @@ class FormValidator {
     this._submitButton = this._form.querySelector(this._submitButtonSelector);
   }
 
-//__INPUTS______________________________________________________________________________
+  //__INPUTS______________________________________________________________________________
 
   _validationInput(inputElement) {
     this._inputError = this._form.querySelector(`#${inputElement.id}_error`);
@@ -39,10 +39,10 @@ class FormValidator {
     }
   }
 
-//__BUTTONS______________________________________________________________________________
+  //__BUTTONS______________________________________________________________________________
 
   _enableSubmitButton() {
-    this._submitButton.removeAttribute("disabled", '');
+    this._submitButton.removeAttribute("disabled", "");
     this._submitButton.classList.add(this._activeButtonClass);
     this._submitButton.classList.remove(this._inactiveButtonClass);
   }
@@ -62,7 +62,7 @@ class FormValidator {
     }
   }
 
-//__LISTENERS____________________________________________________________________________
+  //__LISTENERS____________________________________________________________________________
 
   _setEventListeners() {
     this._submitButtonState();
@@ -78,7 +78,7 @@ class FormValidator {
     });
   }
 
-//______________________________________________________________________________________
+  //______________________________________________________________________________________
 
   enableValidation() {
     this._form.addEventListener("submit", (evt) => {

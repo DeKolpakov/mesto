@@ -3,6 +3,7 @@
   height: 26px;
   background-image: url("../../../images/icons/avatar-edit.svg");
   background-repeat: no-repeat;
+  background-color: transparent;
   box-shadow: none;
   border: none;
   cursor: pointer;

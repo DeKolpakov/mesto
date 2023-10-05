@@ -1,12 +1,12 @@
 export class Section {
-  constructor({cardList, renderer}, template) {
-    this._cardList = cardList;
+  constructor({renderer}, template) {
+    //this._cardList = cardList;
     this._renderer = renderer;
     this._template = template;
   }
 
-  rendererAllCard() {
-    this._cardList.forEach((itemCard) => {
+  rendererAllCard(cardData) {
+    cardData.forEach((itemCard) => {
       this._renderer(itemCard);
     });
   }
