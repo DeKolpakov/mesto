@@ -1,7 +1,8 @@
 export class UserInfo {
-  constructor(nameOutputProfile, descriptionOutputProfile) {
+  constructor(nameOutputProfile, descriptionOutputProfile, avatarProfile) {
     this._nameProfile = nameOutputProfile;
     this._descriptionProfile = descriptionOutputProfile;
+    this._avatarProfile = avatarProfile;
   }
 
   getUserInfo() {
@@ -11,8 +12,14 @@ export class UserInfo {
     };
   }
 
-  setUserInfo(formData) {
-    this._nameProfile.textContent = formData.name;
-    this._descriptionProfile.textContent = formData.description;
+  setUserInfo(userData) {
+    this._nameProfile.textContent = userData.name;
+    this._descriptionProfile.textContent = userData.description;
+  }
+
+  setUserAvatar(data) {
+    //console.log("!!!", data)
+    //console.log(this._avatarProfile)
+    this._avatarProfile.src = data.avatar;
   }
 }
