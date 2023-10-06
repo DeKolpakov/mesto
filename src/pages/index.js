@@ -1,16 +1,17 @@
 import "./index.css";
 //import {initialCards} from "../utils/initialCard.js";
+import {Api} from "../components/Api.js";
 import {Card} from "../components/Card.js";
-import {FormValidator, validationConfig} from "../components/FormValidator.js";
+import {FormValidator} from "../components/FormValidator.js";
 import {Section} from "../components/Section.js";
 import {UserInfo} from "../components/UserInfo.js";
+
 import {PopupWithImage} from "../components/PopupWithImage.js";
 import {PopupWithForm} from "../components/PopupWithForm.js";
-
-import {Api} from "../components/Api.js";
-import {apiKey} from "../utils/apiKey.js";
 import {PopupWithDelete} from "../components/PopupWIthDelete.js";
 
+import {apiKey} from "../utils/apiKey.js";
+import {validationConfig} from "../utils/validationConfig.js";
 import {
   nameOutputProfile,
   descriptionOutputProfile,
@@ -50,7 +51,7 @@ Promise.all([api.getProfileInfo(), api.getCards()])
     });
     //console.log(renderCard)
     userId = userData._id;
-    renderCard.rendererAllCard(cardData.reverse());
+    renderCard.rendererAllCard(cardData);
   })
   .catch((err) => {
     console.log(`Ошибка загрузки данных профиля: ${err}`);
@@ -61,14 +62,15 @@ Promise.all([api.getProfileInfo(), api.getCards()])
 const editProfilePopup = new PopupWithForm(popupProfile, {
   callbackSubmitForm: (formData) => {
     //console.log(formData);
-    userInfo.setUserInfo(formData);
+    //userInfo.setUserInfo(formData);
     api.editUserInfo({
         name: formData.name,
         description: formData.description,
       })
       .then((res) => {
-        profileAvatar.src = res.avatar;
-        popupProfile.close();
+        //console.log(res)
+        userInfo.setUserInfo(formData);
+        editProfilePopup.close();
       })
       .catch((err) => {
         console.log(`Ошибка изменения данных профиля: ${err}`);
@@ -98,7 +100,7 @@ const addImagePopup = new PopupWithForm(popupAddImage, {
             owner: res.owner,
           })
         );
-        // popupAddImage.close()
+        addImagePopup.close()
       })
       .catch((err) => {
         console.log(`Ошибка добавления фото: ${err}`);
@@ -118,8 +120,11 @@ const editAvatarPopup = new PopupWithForm(popupAvatar, {
       .then((res) => {
         //console.log(profileAvatar.src);
         //console.log(res.avatar);
-        profileAvatar.src = res.avatar;
-        popupAvatar.close();
+        //profileAvatar.src = res.avatar;
+        userInfo.setUserAvatar({
+          avatar: res.avatar,
+        });
+        editAvatarPopup.close();
       })
       .catch((err) => {
         console.log(`Ошибка добавления аватара: ${err}`);
@@ -206,7 +211,7 @@ const renderCard = new Section({
   //cardList: initialCards,
     renderer: (itemCard) => {
       //console.log(itemCard)
-      renderCard.addItem(
+      renderCard.addAllItems(
         createNewCard({
           likes: itemCard.likes,
           cardId: itemCard._id,
@@ -241,10 +246,11 @@ editAvatarPopup.setEventListeners();
 deleteCardPopup.setEventListeners();
 
 const openProfilePopup = () => {
-  const {name, description} = userInfo.getUserInfo(name, description);
+  const {name, description} = userInfo.getUserInfo();
   editProfilePopup.openPopup();
   nameInputPopup.value = name;
   descriptionInputPopup.value = description;
+  //console.log(userInfo.getUserInfo())
 };
 
 const openAddImagePopup = () => {

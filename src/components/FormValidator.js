@@ -1,17 +1,4 @@
-//__DATA________________________________________________________________________________
-
-const validationConfig = {
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button-save",
-  inactiveButtonClass: "popup__button-save_invalid",
-  activeButtonClass: "popup__button-save_valid",
-  inputErrorClass: "popup__input_error",
-  errorClass: "popup__input-span_error",
-};
-
-//______________________________________________________________________________________
-
-class FormValidator {
+export class FormValidator {
   constructor(validationConfig, formElement) {
     this._inputSelector = validationConfig.inputSelector;
     this._submitButtonSelector = validationConfig.submitButtonSelector;
@@ -87,7 +74,3 @@ class FormValidator {
     this._setEventListeners();
   }
 }
-
-//______________________________________________________________________________________
-
-export {FormValidator, validationConfig};

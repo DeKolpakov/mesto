@@ -14,4 +14,8 @@ export class Section {
   addItem(cardElement) {
     this._template.prepend(cardElement);
   }
+
+  addAllItems(cardElement) {
+    this._template.append(cardElement);
+  }
 }

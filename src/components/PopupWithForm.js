@@ -24,7 +24,7 @@ export class PopupWithForm extends Popup {
       evt.preventDefault();
       this._submitButton.textContent = "Сохранение...";
       this._callbackSubmitForm(this._getInputValues());
-      this.close();
+      //this.close();
     });
   }
 
